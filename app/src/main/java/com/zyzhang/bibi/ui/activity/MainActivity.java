@@ -1,4 +1,4 @@
-package com.zyzhang.bibi.activity;
+package com.zyzhang.bibi.ui.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

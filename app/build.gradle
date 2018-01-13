@@ -29,4 +29,20 @@ dependencies {
     /*LeakCanary*/
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+
+    /*RxAndroid*/
+    compile 'io.reactivex.rxjava2:rxjava:2.1.0'
+    /*RxJava*/
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    /*Rx生命周期管理*/
+    compile 'com.trello.rxlifecycle2:rxlifecycle:2.1.0'
+    compile 'com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'
+    /*retrofit2*/
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    /*gson转换器的依赖**/
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    /*网络请求框架*/
+    compile 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+
 }
