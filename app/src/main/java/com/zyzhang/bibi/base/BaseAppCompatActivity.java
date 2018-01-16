@@ -16,11 +16,31 @@ public abstract class BaseAppCompatActivity extends RxAppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        init();
+        //设置布局内容
+        setContentView(getLayoutId());
+        //初始化控件
+        initViews(savedInstanceState);
+        //初始化ToolBar
+        initToolBar();
+
     }
 
     /**
-     * 初始化应用程序，设置一些初始化数据,获取数据等操作
+     * 设置布局layout
+     *
+     * @return
      */
-    protected abstract void init();
+    public abstract int getLayoutId();
+
+    /**
+     * 初始化views
+     *
+     * @param savedInstanceState
+     */
+    public abstract void initViews(Bundle savedInstanceState);
+
+    /**
+     * 初始化toolbar
+     */
+    public abstract void initToolBar();
 }

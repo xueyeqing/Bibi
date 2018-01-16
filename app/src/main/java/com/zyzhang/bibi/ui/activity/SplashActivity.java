@@ -1,15 +1,16 @@
 package com.zyzhang.bibi.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.util.Log;
 
 import com.zyzhang.bibi.R;
 import com.zyzhang.bibi.base.BaseAppCompatActivity;
+import com.zyzhang.bibi.utils.SystemUiVisibilityUtil;
 
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 
 /**
  * @Description: 启动页界面
@@ -19,25 +20,42 @@ import io.reactivex.Observable;
 public class SplashActivity extends BaseAppCompatActivity {
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
+    public int getLayoutId() {
+        return R.layout.activity_splash;
+    }
 
+    @Override
+    public void initViews(Bundle savedInstanceState) {
+        SystemUiVisibilityUtil.hideStatusBar(getWindow(), true);
         setUpSplash();
     }
 
     @Override
-    protected void init() {
-        Log.d("thsgzzy", "init()");
+    public void initToolBar() {
+
     }
 
-    private void setUpSplash() {
-        Observable.timer(2000, TimeUnit.MILLISECONDS);
 
-//        Observable.timer(2000, TimeUnit.MILLISECONDS)
-//                .compose(bindToLifecycle())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(aLong -> finishTask());
+    private void setUpSplash() {
+
+        Observable.timer(2000, TimeUnit.MILLISECONDS)
+                .compose(bindToLifecycle())
+                .observeOn(AndroidSchedulers.mainThread())
+                // java8 lambda表达式
+                .subscribe(aLong -> finishTask());
+//                .subscribe(new Consumer<Long>() {
+//                    @Override
+//                    public void accept(Long aLong) throws Exception {
+//                        finishTask();
+//                    }
+//                });
+
+
+    }
+
+    private void finishTask() {
+        startActivity(new Intent(SplashActivity.this, MainActivity.class));
+        SplashActivity.this.finish();
     }
 
 
