@@ -80,4 +80,8 @@ public abstract class BaseFragment extends RxFragment {
         return this.activity == null ? (getActivity() == null ?
                 null : getActivity().getApplicationContext()) : this.activity.getApplicationContext();
     }
+
+    public <T extends View> T $(int id) {
+        return (T) parentView.findViewById(id);
+    }
 }
